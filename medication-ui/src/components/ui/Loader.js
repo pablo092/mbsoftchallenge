@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 
 export function Loader() {
   return (
-    <motion.div 
+    <motion.div
+      data-testid="loader"
       className="flex justify-center items-center my-4"
       animate={{ rotate: 360 }}
       transition={{ repeat: Infinity, duration: 1.5 }}

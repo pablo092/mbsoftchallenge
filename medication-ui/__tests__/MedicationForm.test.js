@@ -7,7 +7,7 @@ test("deshabilita el botón cuando los campos están vacíos", () => {
     <MedicationForm isOpen={true} onClose={() => {}} />
   );
 
-  const submitButton = screen.getByText("Crear Medicamento");
+  const submitButton = screen.getByText("Crear");
 
   fireEvent.change(screen.getByPlaceholderText("Código del medicamento"), { target: { value: "ABC-123-1" } });
   fireEvent.change(screen.getByPlaceholderText("Nombre comercial"), { target: { value: "TestMed" } });

@@ -47,8 +47,8 @@ La aplicación permite:
 ## 🚀 Instalación y Ejecución
 ### **1️⃣ Clonar el Repositorio**
 ```sh
-git clone https://github.com/tu_usuario/medication-system.git
-cd medication-system
+git clone https://github.com/pablo092/mbsoftchallenge.git
+cd mbsoftchallenge
 ```
 
 ### **2️⃣ Configurar Backend**
@@ -123,11 +123,7 @@ mvn test
 Las pruebas están implementadas con **Jest y React Testing Library**.
 ```sh
 cd medication-ui
-npm test
+npm run test
 ```
 
 ---
-
-## 📄 Licencia
-Este proyecto está bajo la licencia MIT. Puedes usarlo y modificarlo libremente.
-

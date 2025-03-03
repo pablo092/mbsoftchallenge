@@ -52,7 +52,7 @@ export default function MedicationTypeForm({ isOpen, onClose }) {
   };
 
   return (
-    <Modal title="Gestionar Tipo de Medicamento" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Tipo de Medicamento" isOpen={isOpen} onClose={onClose}>
       <Input
         type="text"
         placeholder="Nombre del nuevo tipo"

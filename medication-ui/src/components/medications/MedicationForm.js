@@ -86,7 +86,7 @@ export default function MedicationForm({ isOpen, onClose }) {
               : "bg-gray-300 text-gray-500 cursor-not-allowed"
           }`}
         >
-          Crear Medicamento
+          Crear
         </Button>
       </div>
     </Modal>
