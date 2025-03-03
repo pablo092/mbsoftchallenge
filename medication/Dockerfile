@@ -4,8 +4,10 @@ WORKDIR /medication
 # Copia el código fuente
 COPY . .
 # ✅ Agregar permisos de ejecución
-RUN chmod +x mvnw
-# RUN chmod +x .mvn/wrapper/maven-wrapper.jar
+# Dar permisos de ejecución al wrapper de Maven y asegurarse de que existen los archivos
+RUN chmod +x mvnw \
+    && chmod +x .mvn/wrapper/maven-wrapper.jar \
+    && ls -la .mvn/wrapper
 # Compila la aplicación
 RUN ./mvnw clean package -DskipTests
 
