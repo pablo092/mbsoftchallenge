@@ -28,8 +28,8 @@ La aplicación permite:
 
 ## 🏗️ Arquitectura del Proyecto
 ### **Backend** (Spring Boot)
-- **Microservicio de Medicamentos** (`medication-service`)
-- **Microservicio de Productos** (`product-service`)
+- **Microservicio de Medicamentos** (`medication`)
+- **Microservicio de Productos** (`product`)
 - Base de datos en **H2 en memoria** para desarrollo.
 
 ### **Frontend** (React con Next.js)
