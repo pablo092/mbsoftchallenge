@@ -29,9 +29,9 @@ jobs:
 
       - name: Correr pruebas de backend
         run: |
-          docker-compose exec -T medication ./mvnw test
-          docker-compose exec -T product ./mvnw test
+          docker compose exec -T medication ./mvnw test
+          docker compose exec -T product ./mvnw test
 
       - name: Correr pruebas de frontend
         run: |
-          docker-compose exec -T medication-ui npm test
+          docker compose exec -T medication-ui npm test
