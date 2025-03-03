@@ -21,9 +21,6 @@ jobs:
       - name: Run Docker Compose
         run: docker compose up --build -d
 
-      - name: Clonar repositorio
-        uses: actions/checkout@v3
-
       - name: Esperar que los servicios levanten
         run: sleep 20s
 
