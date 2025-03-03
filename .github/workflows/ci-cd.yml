@@ -18,11 +18,15 @@ jobs:
       - name: 🔎 Check Docker version
         run: docker version
 
+      - name: Grant execution permission to mvnw (Medication)
+        run: chmod +x medication/mvnw
       - name: Build and test backend (Medication)
         run: |
           cd medication
           ./mvnw clean test package
 
+      - name: Grant execution permission to mvnw (Product)
+        run: chmod +x product/mvnw
       - name: Build and test backend (Product)
         run: |
           cd product
@@ -33,9 +37,6 @@ jobs:
           cd medication-ui
           npm install
           npm run build
-
-      - name: 🛠 Run Docker Compose
-        run: docker compose up --build -d
 
       - name: ✅ Verificar contenedores activos
         run: docker compose ps
