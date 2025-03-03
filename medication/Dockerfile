@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . .
 # ✅ Agregar permisos de ejecución
 RUN chmod +x mvnw
+RUN chmod +x .mvn/wrapper/maven-wrapper.jar
 # Compila la aplicación
 RUN ./mvnw clean package -DskipTests
 
