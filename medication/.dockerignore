@@ -1,5 +1,5 @@
-target/
-*.iml
-.mvn
-.idea
-logs/
+!.mvn/
+!.mvn/wrapper/
+!mvnw
+!pom.xml
+!src/

@@ -1,6 +1,6 @@
 # Usa una imagen de JDK 17 como base
 FROM eclipse-temurin:17-jdk-alpine AS builder
-WORKDIR /medication
+WORKDIR /app
 RUN ls -la
 # Copia el código fuente
 COPY . .
@@ -14,9 +14,9 @@ RUN ./mvnw clean package -DskipTests
 
 # Segunda etapa para reducir la imagen
 FROM eclipse-temurin:17-jre-alpine
-WORKDIR /medication
-COPY --from=builder /medication/target/*.jar app.jar
+WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
 # Puerto expuesto
 EXPOSE 8082
 # Ejecuta la aplicación
-ENTRYPOINT ["java", "-jar", "medication.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
