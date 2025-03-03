@@ -9,26 +9,38 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: 🔽 Check out repository
         uses: actions/checkout@v3
 
-      - name: Set up Docker
+      - name: 🐳 Set up Docker
         uses: docker/setup-buildx-action@v2
 
-      - name: Check Docker version
+      - name: 🔎 Check Docker version
         run: docker version
 
-      - name: Run Docker Compose
+      - name: 🛠 Run Docker Compose
         run: docker compose up --build -d
 
-      - name: Esperar que los servicios levanten
-        run: sleep 20s
-
-      - name: Correr pruebas de backend
+      - name: ⏳ Esperar que los servicios levanten
         run: |
-          docker compose exec -T medication ./mvnw test
-          docker compose exec -T product ./mvnw test
+          echo "Esperando que los servicios estén listos..."
+          sleep 5
+          docker ps
 
-      - name: Correr pruebas de frontend
-        run: |
-          docker compose exec -T medication-ui npm test
+      - name: ✅ Verificar contenedores activos
+        run: docker compose ps
+
+      - name: 🧪 Correr pruebas de backend (Medication)
+        run: docker compose exec -T medication ./mvnw test || exit 1
+
+      - name: 🧪 Correr pruebas de backend (Product)
+        run: docker compose exec -T product ./mvnw test || exit 1
+
+      - name: 🚀 Instalar dependencias en frontend
+        run: docker compose exec -T medication-ui npm install
+
+      - name: 🧪 Correr pruebas de frontend
+        run: docker compose exec -T medication-ui npm test || exit 1
+
+      - name: 🛑 Apagar los contenedores después de la ejecución
+        run: docker compose down

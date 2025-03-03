@@ -1,7 +1,6 @@
 # Usa una imagen de JDK 17 como base
 FROM eclipse-temurin:17-jdk-alpine AS builder
 WORKDIR /app
-RUN ls -la
 # Copia el código fuente
 COPY . .
 # ✅ Agregar permisos de ejecución
