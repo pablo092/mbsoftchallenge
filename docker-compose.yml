@@ -2,7 +2,9 @@ version: "3.8"
 
 services:
   medication:
-    build: ./medication
+    build: 
+      context: ./medication
+      dockerfile: Dockerfile
     ports:
       - "8082:8082"
     environment:
@@ -17,12 +19,16 @@ services:
       - product
 
   product:
-    build: ./product
+    build: 
+      context: ./product
+      dockerfile: Dockerfile
     ports:
       - "8081:8081"
 
   medication-ui:
-    build: ./medication-ui
+    build: 
+      context: ./medication-ui
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:
