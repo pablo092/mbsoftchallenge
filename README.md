@@ -123,7 +123,7 @@ mvn test
 Las pruebas están implementadas con **Jest y React Testing Library**.
 ```sh
 cd medication-ui
-npm run test
+npm test
 ```
 
 ---
