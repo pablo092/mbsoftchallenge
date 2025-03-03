@@ -15,9 +15,6 @@ jobs:
       - name: 🐳 Set up Docker
         uses: docker/setup-buildx-action@v2
 
-      - name: 🔎 Check Docker version
-        run: docker version
-
       - name: Grant execution permission to mvnw (Medication)
         run: chmod +x medication/mvnw
       - name: Build and test backend (Medication)
@@ -40,13 +37,7 @@ jobs:
           npm install
           npm run build
 
-      - name: ✅ Verificar contenedores activos
-        run: docker compose ps
-
       - name: Run frontend tests
         run: |
           cd medication-ui
           npm test
-
-      - name: 🛑 Apagar los contenedores después de la ejecución
-        run: docker compose down
