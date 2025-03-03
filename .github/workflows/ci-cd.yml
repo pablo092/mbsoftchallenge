@@ -24,6 +24,7 @@ jobs:
         run: |
           cd medication
           ./mvnw clean test package
+          mvn test
 
       - name: Grant execution permission to mvnw (Product)
         run: chmod +x product/mvnw
@@ -31,6 +32,7 @@ jobs:
         run: |
           cd product
           ./mvnw clean test package
+          mvn test
 
       - name: Build frontend
         run: |
