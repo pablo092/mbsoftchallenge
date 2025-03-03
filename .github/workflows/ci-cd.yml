@@ -24,8 +24,11 @@ jobs:
       - name: ⏳ Esperar que los servicios levanten
         run: |
           echo "Esperando que los servicios estén listos..."
-          sleep 5
+          sleep 15
           docker ps
+
+      - name: 🔄 Reiniciar contenedores
+        run: docker compose down --remove-orphans
 
       - name: ✅ Verificar contenedores activos
         run: docker compose ps
