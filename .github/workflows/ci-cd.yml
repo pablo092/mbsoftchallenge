@@ -18,32 +18,32 @@ jobs:
       - name: 🔎 Check Docker version
         run: docker version
 
+      - name: Build and test backend (Medication)
+        run: |
+          cd medication
+          ./mvnw clean test package
+
+      - name: Build and test backend (Product)
+        run: |
+          cd product
+          ./mvnw clean test package
+
+      - name: Build frontend
+        run: |
+          cd medication-ui
+          npm install
+          npm run build
+
       - name: 🛠 Run Docker Compose
         run: docker compose up --build -d
-
-      - name: ⏳ Esperar que los servicios levanten
-        run: |
-          echo "Esperando que los servicios estén listos..."
-          sleep 15
-          docker ps
-
-      - name: 🔄 Reiniciar contenedores
-        run: docker compose down --remove-orphans
 
       - name: ✅ Verificar contenedores activos
         run: docker compose ps
 
-      - name: 🧪 Correr pruebas de backend (Medication)
-        run: docker compose exec -T medication ./mvnw test || exit 1
-
-      - name: 🧪 Correr pruebas de backend (Product)
-        run: docker compose exec -T product ./mvnw test || exit 1
-
-      - name: 🚀 Instalar dependencias en frontend
-        run: docker compose exec -T medication-ui npm install
-
-      - name: 🧪 Correr pruebas de frontend
-        run: docker compose exec -T medication-ui npm test || exit 1
+      - name: Run frontend tests
+        run: |
+          cd medication-ui
+          npm test
 
       - name: 🛑 Apagar los contenedores después de la ejecución
         run: docker compose down
