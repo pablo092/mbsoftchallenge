@@ -1,0 +1,45 @@
+# Ignorar archivos y carpetas generados por Maven y Java
+/medication/target/
+/product/target/
+*.log
+*.class
+*.jar
+*.war
+*.iml
+/.idea/
+/.vscode/
+/out/
+/logs/
+/tmp/
+
+# Ignorar archivos de configuración de IDEs
+*.sublime-workspace
+*.sublime-project
+/.classpath
+/.settings/
+/.project
+
+# Ignorar archivos de bases de datos en memoria
+*.h2.db
+*.mv.db
+*.db
+
+# Ignorar dependencias de Node.js
+/medication-ui/node_modules/
+/medication-ui/npm-debug.log
+/medication-ui/yarn-error.log
+/medication-ui/.next/
+/medication-ui/out/
+/medication-ui/dist/
+/medication-ui/coverage/
+
+# Ignorar variables de entorno y configuración sensible
+medication-ui/.env
+medication-ui/.env.local
+medication-ui/.env.development
+medication-ui/.env.production
+medication-ui/.env.test
+
+# Ignorar caché de Jest y pruebas
+/medication-ui/coverage/
+/medication-ui/jest.cache/
