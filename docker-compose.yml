@@ -30,15 +30,15 @@ services:
     depends_on:
       - medication
       - product
-  github-runner:
-    image: myoung34/github-runner:latest
-    restart: always
-    environment:
-      - REPO_URL=https://github.com/pablo092/mbsoftchallenge
-      - RUNNER_NAME=docker-runner
-      - RUNNER_TOKEN=AEFKH4PUCMJFKSXSGQL4KL3HY4KD4
-      - LABELS=self-hosted
-      - RUNNER_WORKDIR=/tmp/github-runner
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./github-runner:/tmp/github-runner
+  # github-runner:
+  #   image: myoung34/github-runner:latest
+  #   restart: always
+  #   environment:
+  #     - REPO_URL=https://github.com/pablo092/mbsoftchallenge
+  #     - RUNNER_NAME=docker-runner
+  #     - RUNNER_TOKEN=AEFKH4PUCMJFKSXSGQL4KL3HY4KD4
+  #     - LABELS=self-hosted
+  #     - RUNNER_WORKDIR=/tmp/github-runner
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - ./github-runner:/tmp/github-runner
