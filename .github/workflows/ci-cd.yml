@@ -7,7 +7,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: 🔽 Check out repository
         uses: actions/checkout@v3
@@ -17,6 +18,7 @@ jobs:
 
       - name: Grant execution permission to mvnw (Medication)
         run: chmod +x medication/mvnw
+
       - name: Build and test backend (Medication)
         run: |
           cd medication
@@ -25,6 +27,7 @@ jobs:
 
       - name: Grant execution permission to mvnw (Product)
         run: chmod +x product/mvnw
+
       - name: Build and test backend (Product)
         run: |
           cd product
@@ -41,3 +44,18 @@ jobs:
         run: |
           cd medication-ui
           npm test
+
+      - name: 🚀 Levantar backend y frontend con Docker
+        run: |
+          docker-compose up -d --build
+          sleep 10
+
+      - name: 🔗 Mostrar URLs de acceso
+        run: |
+          HOST_IP=$(hostname -I | awk '{print $1}')
+          echo "🔗 Frontend disponible en: http://$HOST_IP:3000"
+          echo "🔗 Backend (Medication Service) en: http://$HOST_IP:8082/api/medications"
+          echo "🔗 Backend (Product Service) en: http://$HOST_IP:8081/api/products"
+
+      - name: 🔍 Verificar que los contenedores están corriendo
+        run: docker ps -a

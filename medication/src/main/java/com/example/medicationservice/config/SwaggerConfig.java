@@ -3,6 +3,7 @@ package com.example.medicationservice.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springdoc.core.models.GroupedOpenApi;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,10 +31,12 @@ public class SwaggerConfig {
     }
 
     @Bean
-    public CommandLineRunner logSwaggerUrl() {
+    public CommandLineRunner logSwaggerUrl(@Value("${SERVER_IP:localhost}") String serverIp,
+            @Value("${server.port}") int serverPort) {
         return args -> {
             logger.info("📖 Swagger UI disponible en:");
-            logger.info("   ➤ http://localhost:8082/swagger-ui.html  (Medication Service)");
+            logger.info("   ➤ http://{}:{}}/swagger-ui.html (Medication Service)", serverIp, serverPort);
         };
     }
+
 }
